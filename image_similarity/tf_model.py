@@ -3,7 +3,7 @@ __all__ = ["create_model"]
 import tensorflow as tf
 
 
-def create_model(img_shape: tuple = (512, 512, 3)):
+def create_model(img_shape=(512, 512, 3)):
     """
     Cretes a simple Convolutional Auto-encoder.
     It uses the functional API of tensorflow.
@@ -11,7 +11,7 @@ def create_model(img_shape: tuple = (512, 512, 3)):
     Need to create some programmatic API for this.
     """
 
-    input_ = tf.keras.layers.Input(img_shape)
+    input_ = tf.keras.layers.Input(shape=img_shape)
     x = tf.keras.layers.Conv2D(16, (3, 3), activation="relu", padding="same")(input_)
     x = tf.keras.layers.MaxPooling2D((2, 2), padding="same")(x)
     x = tf.keras.layers.Conv2D(8, (3, 3), activation="relu", padding="same")(x)
@@ -23,7 +23,7 @@ def create_model(img_shape: tuple = (512, 512, 3)):
     x = tf.keras.layers.UpSampling2D((2, 2))(x)
     x = tf.keras.layers.Conv2D(8, (3, 3), activation="relu", padding="same")(x)
     x = tf.keras.layers.UpSampling2D((2, 2))(x)
-    x = tf.keras.layers.Conv2D(16, (3, 3), activation="relu")(x)
+    x = tf.keras.layers.Conv2D(16, (3, 3), activation="relu", padding="same")(x)
     x = tf.keras.layers.UpSampling2D((2, 2))(x)
     decoded = tf.keras.layers.Conv2D(
         img_shape[2], (3, 3), activation="sigmoid", padding="same"
@@ -37,7 +37,7 @@ def create_model(img_shape: tuple = (512, 512, 3)):
     # Create encoder model
     encoder = tf.keras.Model(input_, encoded)  # set encoder
     # input_encoder_shape = encoder.layers[0].input_shape[1:]
-    # output_encoder_shape = encoder.layers[-1].output_shape[1:]
+    output_encoder_shape = encoder.layers[-1].output_shape[1:]
 
     # Create decoder model
     decoded_input = tf.keras.Input(shape=output_encoder_shape)

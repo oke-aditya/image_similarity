@@ -20,6 +20,7 @@ def create_image_dataset(data_dir, n_images: int = None):
         image = image / 255.0
         all_images.append(image)
         image_array = np.array(all_images)
+        # print(image_array.shape)
 
         if count == n_images:
             break
@@ -30,7 +31,8 @@ def create_image_dataset(data_dir, n_images: int = None):
     # Since we are training auto-encoders, labels are the images itself.
     # We don't have supervised labels.
     tf_dataset = tf.data.Dataset.from_tensor_slices((image_array, image_array))
-    print(tf_dataset)
+    # print(tf_dataset)
+    # print(tf_dataset)
     return tf_dataset
 
 
