@@ -1,4 +1,4 @@
-site_name: Python Template Repository Docs
+site_name: Image Similartiy Docs
 theme:
   name: "material"
   palette:
@@ -6,7 +6,7 @@ theme:
     accent: "blue"
 
 docs_dir: templates
-repo_url: https://github.com/oke-aditya/template_python
+repo_url: https://github.com/oke-aditya/image_similarity
 markdown_extensions:
   - codehilite
   - pymdownx.superfences:

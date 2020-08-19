@@ -9,7 +9,7 @@
 docs/site
 
 # Data Folder
-# data/
+data/
 
 # Models
 *.h5
