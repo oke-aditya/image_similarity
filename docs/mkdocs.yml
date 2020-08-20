@@ -23,5 +23,4 @@ extra_javascript:
 
 nav:
   - Home: index.md
-  - Contributing: contributing.md
-  - Using This Template: using_template.md 
+ 
