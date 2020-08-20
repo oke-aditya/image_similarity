@@ -8,6 +8,13 @@ from torch.utils.data import Dataset
 
 
 class FolderDataset(Dataset):
+    """
+    Creates a PyTorch dataset from folder, returning two tensor images.
+    Args: 
+    main_dir : directory where images are stored.
+    transform (optional) : torchvision transforms to be applied while making dataset
+    """
+
     def __init__(self, main_dir, transform=None):
         self.main_dir = main_dir
         self.transform = transform

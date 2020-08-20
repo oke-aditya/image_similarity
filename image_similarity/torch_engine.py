@@ -12,7 +12,18 @@ import torch.nn as nn
 
 
 def train_step(encoder, decoder, train_loader, loss_fn, optimizer, device):
-    # device = "cuda"
+    """
+    Performs a single training step
+    Args:
+    encoder: A convolutional Encoder. E.g. torch_model ConvEncoder
+    decoder: A convolutional Decoder. E.g. torch_model ConvDecoder
+    train_loader: PyTorch dataloader, containing (images, images).
+    loss_fn: PyTorch loss_fn, computes loss between 2 images.
+    optimizer: PyTorch optimizer.
+    device: "cuda" or "cpu"
+
+    Returns: Train Loss
+    """
     encoder.train()
     decoder.train()
 
@@ -36,6 +47,18 @@ def train_step(encoder, decoder, train_loader, loss_fn, optimizer, device):
 
 
 def val_step(encoder, decoder, val_loader, loss_fn, device):
+    """
+    Performs a single training step
+    Args:
+    encoder: A convolutional Encoder. E.g. torch_model ConvEncoder
+    decoder: A convolutional Decoder. E.g. torch_model ConvDecoder
+    val_loader: PyTorch dataloader, containing (images, images).
+    loss_fn: PyTorch loss_fn, computes loss between 2 images.
+    device: "cuda" or "cpu"
+
+    Returns: Validation Loss
+    """
+
     encoder.eval()
     decoder.eval()
 
@@ -53,6 +76,15 @@ def val_step(encoder, decoder, val_loader, loss_fn, device):
 
 
 def create_embedding(encoder, full_loader, embedding_dim, device):
+    """
+    Creates embedding using encoder from dataloader.
+    encoder: A convolutional Encoder. E.g. torch_model ConvEncoder
+    full_loader: PyTorch dataloader, containing (images, images) over entire dataset.
+    embedding_dim: Tuple (c, h, w) Dimension of embedding = output of encoder dimesntions.
+    device: "cuda" or "cpu"
+
+    Returns: Embedding of size (num_images_in_loader + 1, c, h, w)
+    """
     encoder.eval()
     embedding = torch.randn(embedding_dim)
     # print(embedding.shape)

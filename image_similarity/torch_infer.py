@@ -14,6 +14,12 @@ import matplotlib.pyplot as plt
 
 
 def load_image_tensor(image_path, device):
+    """
+    Loads a given image to device.
+    Args:
+    image_path: path to image to be loaded.
+    device: "cuda" or "cpu"
+    """
     image_tensor = T.ToTensor()(Image.open(image_path))
     image_tensor = image_tensor.unsqueeze(0)
     print(image_tensor.shape)
@@ -22,6 +28,17 @@ def load_image_tensor(image_path, device):
 
 
 def compute_similar_images(image_path, num_images, embedding, device):
+    """
+    Given an image and number of similar images to generate.
+    Returns the num_images closest neares images.
+
+    Args:
+    image_path: Path to image whose similar images are to be found.
+    num_images: Number of similar images to find.
+    embedding : A (num_images, embedding_dim) Embedding of images learnt from auto-encoder.
+    device : "cuda" or "cpu" device.
+    """
+
     image_tensor = load_image_tensor(image_path, device)
     # image_tensor = image_tensor.to(device)
 
@@ -43,6 +60,12 @@ def compute_similar_images(image_path, num_images, embedding, device):
 
 
 def plot_similar_images(indices_list):
+    """
+    Plots images that are similar to indices obtained from computing simliar images.
+    Args:
+    indices_list : List of List of indexes. E.g. [[1, 2, 3]]
+    """
+
     indices = indices_list[0]
     for index in indices:
         img_name = str(index - 1) + ".jpg"

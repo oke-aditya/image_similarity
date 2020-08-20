@@ -3,10 +3,14 @@ __all__ = ["ConvEncoder", "ConvDecoder"]
 import torch
 import torch.nn as nn
 
-import config
+# import config
 
 
 class ConvEncoder(nn.Module):
+    """
+    A simple Convolutional Encoder Model
+    """
+
     def __init__(self):
         super().__init__()
         # self.img_size = img_size
@@ -66,6 +70,10 @@ class ConvEncoder(nn.Module):
 
 
 class ConvDecoder(nn.Module):
+    """
+    A simple Convolutional Decoder Model
+    """
+
     def __init__(self):
         super().__init__()
         self.deconv1 = nn.ConvTranspose2d(256, 128, (2, 2), stride=(2, 2))
