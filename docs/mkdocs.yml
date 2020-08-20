@@ -1,12 +1,13 @@
-site_name: Image Similartiy Docs
+site_name: Image Similarity Docs
 theme:
   name: "material"
   palette:
-    primary: "blue"
-    accent: "blue"
+    primary: "dark-blue"
+    accent: "dark-blue"
 
 docs_dir: templates
 repo_url: https://github.com/oke-aditya/image_similarity
+
 markdown_extensions:
   - codehilite
   - pymdownx.superfences:
@@ -22,5 +23,6 @@ extra_javascript:
   - https://unpkg.com/mermaid@8.4.4/dist/mermaid.min.js
 
 nav:
-  - Home: index.md
- 
+  - Convolutional Auto-encoder: index.md
+  - Creating Embeddings: creating_embeddings.md
+  - Finding Similar Images: image_simi.md 
