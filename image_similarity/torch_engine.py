@@ -63,7 +63,7 @@ def val_step(encoder, decoder, val_loader, loss_fn, device):
     decoder.eval()
 
     with torch.no_grad():
-        for batch_idx, (train_img, target_img) in enumerate(train_loader):
+        for batch_idx, (train_img, target_img) in enumerate(val_loader):
             train_img = train_img.to(device)
             target_img = target_img.to(device)
 

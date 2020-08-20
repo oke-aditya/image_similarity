@@ -41,7 +41,7 @@ if __name__ == "__main__":
     val_loader = torch.utils.data.DataLoader(
         val_dataset, batch_size=config.TEST_BATCH_SIZE
     )
-    full_dataloader = torch.utils.data.DataLoader(
+    full_loader = torch.utils.data.DataLoader(
         full_dataset, batch_size=config.FULL_BATCH_SIZE
     )
 
