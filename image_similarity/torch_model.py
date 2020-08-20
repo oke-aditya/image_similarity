@@ -3,6 +3,8 @@ __all__ = ["ConvEncoder", "ConvDecoder"]
 import torch
 import torch.nn as nn
 
+import config
+
 
 class ConvEncoder(nn.Module):
     def __init__(self):
@@ -51,11 +53,11 @@ class ConvDecoder(nn.Module):
         self.relu1 = nn.ReLU(inplace=True)
 
         self.deconv2 = nn.ConvTranspose2d(32, 16, (2, 2), stride=(2, 2))
-        self.upsamp1 = nn.UpsamplingBilinear2d(2)
+        # self.upsamp1 = nn.UpsamplingBilinear2d(2)
         self.relu2 = nn.ReLU(inplace=True)
 
         self.deconv3 = nn.ConvTranspose2d(16, 3, (2, 2), stride=(2, 2))
-        self.upsamp1 = nn.UpsamplingBilinear2d(2)
+        # self.upsamp1 = nn.UpsamplingBilinear2d(2)
         self.relu3 = nn.ReLU(inplace=True)
 
     def forward(self, x):
@@ -74,12 +76,42 @@ class ConvDecoder(nn.Module):
         return x
 
 
-# if __name__ == "__main__":
-#     img_random = torch.randn(1, 3, 512, 512)
-#     # print(img_random.shape)
-#     enc = ConvEncoder()
-#     dec = ConvDecoder()
-#     enc_out = enc(img_random)
-#     # print(enc_out.shape)
-#     dec_out = dec(enc_out)
-#     # print(dec_out.shape)
+if __name__ == "__main__":
+    img_random = torch.randn(1, 3, 512, 512)
+    img_random2 = torch.randn(1, 3, 512, 512)
+    # print(img_random.shape)
+
+    enc = ConvEncoder()
+    dec = ConvDecoder()
+
+    enc_out = enc(img_random)
+    enc_out2 = enc(img_random2)
+    print(enc_out.shape)
+    print(enc_out2.shape)
+
+    # emb = torch.cat((enc_out, enc_out2), 0)
+    # print(emb.shape)
+
+    # # embedding = torch.randn(config.EMBEDDING_SHAPE)
+    # # print(embedding.shape)
+
+    dec_out = dec(enc_out)
+    print(dec_out.shape)
+
+    # embedding_dim = config.EMBEDDING_SHAPE
+    # embedding = torch.randn(embedding_dim)
+    # print(embedding.shape)
+
+    # img_random = torch.randn(32, 3, 512, 512)
+    # img_random2 = torch.randn(32, 3, 512, 512)
+
+    # encoder = ConvEncoder()
+    # enc_output = encoder(img_random).cpu()
+    # embedding = torch.cat((embedding, enc_output), 0)
+    # print(embedding.shape)
+
+    # enc_output2 = encoder(img_random2).cpu()
+    # embedding = torch.cat((embedding, enc_output2), 0)
+    # print(embedding.shape)
+
+    # print(embedding.numpy().shape)

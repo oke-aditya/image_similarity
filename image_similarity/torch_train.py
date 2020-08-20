@@ -4,13 +4,18 @@ import torch_engine
 import torchvision.transforms as T
 import torch_data
 import config
+import numpy as np
 from tqdm import tqdm
 import torch.nn as nn
 import torch.optim as optim
 import utils
 
 if __name__ == "__main__":
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if torch.cuda.is_available():
+        device = "cuda"
+    else:
+        device = "cpu"
+
     print("Setting Seed for the run, seed = {}".format(config.SEED))
 
     utils.seed_everything(config.SEED)
@@ -34,6 +39,9 @@ if __name__ == "__main__":
     val_loader = torch.utils.data.DataLoader(
         val_dataset, batch_size=config.TEST_BATCH_SIZE
     )
+    full_dataloader = torch.utils.data.DataLoader(
+        full_dataset, batch_size=config.FULL_BATCH_SIZE
+    )
 
     print("------------ Dataloader Cretead ------------")
 
@@ -51,6 +59,8 @@ if __name__ == "__main__":
     encoder.to(device)
     decoder.to(device)
 
+    # print(device)
+
     autoencoder_params = list(encoder.parameters()) + list(decoder.parameters())
     optimizer = optim.AdamW(autoencoder_params, lr=config.LEARNING_RATE)
 
@@ -61,10 +71,12 @@ if __name__ == "__main__":
 
     for epoch in tqdm(range(config.EPOCHS)):
         train_loss = torch_engine.train_step(
-            encoder, decoder, train_loader, loss_fn, optimizer, device
+            encoder, decoder, train_loader, loss_fn, optimizer, device=device
         )
         print(f"Epochs = {epoch}, Training Loss : {train_loss}")
-        val_loss = torch_engine.val_step(encoder, decoder, val_loader, loss_fn, device)
+        val_loss = torch_engine.val_step(
+            encoder, decoder, val_loader, loss_fn, device=device
+        )
 
         # Simple Best Model saving
         if val_loss < max_loss:
@@ -75,3 +87,17 @@ if __name__ == "__main__":
         print(f"Epochs = {epoch}, Validation Loss : {val_loss}")
 
     print("Training Done")
+
+    print("---- Creating Embeddings for the full dataset ---- ")
+
+    embedding = torch_engine.create_embedding(
+        encoder, full_loader, config.EMBEDDING_SHAPE, device
+    )
+
+    # Convert embedding to numpy and save them
+    numpy_embedding = embedding.cpu().detach().numpy()
+    num_images = numpy_embedding.shape[0]
+
+    # Dump the embeddings for complete dataset, not just train
+    flattened_embedding = numpy_embedding.reshape((num_images, -1))
+    np.save(config.EMBEDDING_PATH, flattened_embedding)
