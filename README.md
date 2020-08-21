@@ -16,6 +16,7 @@
 === data                        Read data from here. It is in gitignore so it won't appear here.
 === docs                        Documentation using mkdocs.
 === image_similarity
+====== cluster_images.py        Clusters the embeddings learnt using PCA and T-SNE.
 ====== torch_data.py            Contains Dataset class to create PyTorch dataset from folder.
 ====== torch_model.py           Convolutional Auto-enocder Model.
 ====== torch_engine.py          Train_step and validation_step for training.
@@ -33,13 +34,32 @@ Please visit [here](https://oke-aditya.github.io/image_similarity) for documenta
 
 It contains detailed description of work.
 
-<!-- ## Outputs -->
+## Image similarity Outputs
+
+Some sample outputs of recommendations.
+
+- Query Image
+
+![Query Image](outputs/query_image_0/query_image.jpg)
+
+- Recommendaed Images
+
+![Recommendation 1](outputs/query_image_0/recommended_298.jpg)
+
+
+![Recommendation 2](outputs/query_image_0/recommended_532.jpg)
+
+
+![Recommendation 3](outputs/query_image_0/recommended_813.jpg)
+
+More outputs can be found in outputs folder.
 
 ## Models
 
 - Some models trained using a sample dataset are given in [this](https://drive.google.com/drive/folders/1T6uS4O7LiuGMtXlRSMFmKAEDNQ08Ry25?usp=sharing) link.
 - It contains encoder, decoder and numpy embeddings generated from auto-enocoders.
 - These are obtained by running `torch_train.py` script.
+
 
 
 
