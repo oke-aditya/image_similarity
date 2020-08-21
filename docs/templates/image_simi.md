@@ -25,5 +25,20 @@ Use the indices of these nearest embeddings, we display the most similar image f
 - It contains encoder, decoder and numpy embeddings generated from auto-enocoders.
 - These are obtained by running `torch_train.py` script.
 
+## Outputs
 
+- Query Image 
+
+![Query Image](images/query_image_3699.jpg)
+
+
+- Recommended Images
+
+![Recommended Images](images/recommended_835.jpg)
+
+
+![Recommended Images](images/recommended_1215.jpg)
+
+
+![Recommended Images](images/recommended_2300.jpg)
 
