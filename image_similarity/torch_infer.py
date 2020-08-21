@@ -27,7 +27,7 @@ def load_image_tensor(image_path, device):
     """
     image_tensor = T.ToTensor()(Image.open(image_path))
     image_tensor = image_tensor.unsqueeze(0)
-    print(image_tensor.shape)
+    # print(image_tensor.shape)
     # input_images = image_tensor.to(device)
     return image_tensor
 
@@ -50,17 +50,17 @@ def compute_similar_images(image_path, num_images, embedding, device):
     with torch.no_grad():
         image_embedding = encoder(image_tensor).cpu().detach().numpy()
 
-    print(image_embedding.shape)
+    # print(image_embedding.shape)
 
     flattened_embedding = image_embedding.reshape((image_embedding.shape[0], -1))
-    print(flattened_embedding.shape)
+    # print(flattened_embedding.shape)
 
     knn = NearestNeighbors(n_neighbors=num_images, metric="cosine")
     knn.fit(embedding)
 
     _, indices = knn.kneighbors(flattened_embedding)
     indices_list = indices.tolist()
-    print(indices_list)
+    # print(indices_list)
     return indices_list
 
 
@@ -79,7 +79,7 @@ def plot_similar_images(indices_list):
         else:
             img_name = str(index - 1) + ".jpg"
             img_path = os.path.join(config.DATA_PATH + img_name)
-            print(img_path)
+            # print(img_path)
             img = Image.open(img_path).convert("RGB")
             plt.imshow(img)
             plt.show()
@@ -109,19 +109,19 @@ def compute_similar_features(image_path, num_images, embedding, nfeatures=30):
     des = des / 255.0
     des = np.expand_dims(des, axis=0)
     des = np.reshape(des, (des.shape[0], -1))
-    print(des.shape)
-    print(embedding.shape)
+    # print(des.shape)
+    # print(embedding.shape)
 
     pca = PCA(n_components=des.shape[-1])
     reduced_embedding = pca.fit_transform(embedding,)
-    print(reduced_embedding.shape)
+    # print(reduced_embedding.shape)
 
     knn = NearestNeighbors(n_neighbors=num_images, metric="cosine")
     knn.fit(reduced_embedding)
     _, indices = knn.kneighbors(des)
 
     indices_list = indices.tolist()
-    print(indices_list)
+    # print(indices_list)
     return indices_list
 
 
@@ -139,9 +139,9 @@ if __name__ == "__main__":
     # Loads the embedding
     embedding = np.load(config.EMBEDDING_PATH)
 
-    # indices_list = compute_similar_images(
-    #     config.TEST_IMAGE_PATH, config.NUM_IMAGES, embedding, device
-    # )
-    # plot_similar_images(indices_list)
+    indices_list = compute_similar_images(
+        config.TEST_IMAGE_PATH, config.NUM_IMAGES, embedding, device
+    )
+    plot_similar_images(indices_list)
     indices_list = compute_similar_features(config.TEST_IMAGE_PATH, 5, embedding)
     plot_similar_images(indices_list)

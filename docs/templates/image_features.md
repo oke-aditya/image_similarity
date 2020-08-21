@@ -34,5 +34,3 @@ I have plotted keypoints on them.
 
 We can see that the features extracted are similar.
 
-
-
