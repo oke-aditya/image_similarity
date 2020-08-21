@@ -1,12 +1,11 @@
-# How to structure the code ?
+# How the code is structured ?
 
-- Usually it is good practice to divide code into data, model, engine, train files.
-- If you have more than one model / API create another folder and place python files there.
+- `torch_data.py` contains dataset class that can be used for loading data.
+- `torch_model.py` contains models which we need to train.
+- `torch_engine.py` contains training and validation steps. It also contains code to create embeddings.
+- `torch_infer.py` contains code for inference.
+- The `.ipynb` notebooks are provided as standalone scripts that can be used for training and inference.
 
-- It is important to include `__init__.py` folder otherwise the package will not be able to import
-functions / classes.
+This folder structure allows ease of programming, modularization and easy re-use.
 
-- In the `__init__.py` folder import stuff as you need. E.g. `from template_ml.ml_src.app import *`
-
-- Use imports relative to `template_ml` do not use relative imports. This is a better practice.
 
