@@ -7,8 +7,10 @@ import torch_model
 from sklearn.neighbors import NearestNeighbors
 import torchvision.transforms as T
 import os
+import cv2
 from PIL import Image
 import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
 
 # %matplotlib inline
 
@@ -77,6 +79,45 @@ def plot_similar_images(indices_list):
         # img.save(f"../outputs/query_image_1/recommended_{index}.jpg")
 
 
+def compute_similar_features(image_path, num_images, embedding, nfeatures=20):
+    """ 
+    Given a image, it computes features using ORB detector and finds similar images to it
+    Args:
+    image_path: Path to image whose features and simlar images are required.
+    num_images: Number of similar images required.
+    embedding: 2 Dimensional Embedding vector.
+    nfeatures: (optional) Number of features ORB needs to compute
+    """
+
+    image = cv2.imread(image_path)
+    orb = cv2.ORB_create(nfeatures=nfeatures)
+
+    # Detect features
+    keypoint_features = orb.detect(image)
+    # compute the descriptors with ORB
+    keypoint_features, des = orb.compute(image, keypoint_features)
+
+    # des contains the description to features
+
+    des = des / 255.0
+    des = np.expand_dims(des, axis=0)
+    des = np.reshape(des, (des.shape[0], -1))
+    print(des.shape)
+    print(embedding.shape)
+
+    pca = PCA(n_components=des.shape[-1])
+    reduced_embedding = pca.fit_transform(embedding,)
+    print(reduced_embedding.shape)
+
+    knn = NearestNeighbors(n_neighbors=num_images, metric="cosine")
+    knn.fit(reduced_embedding)
+    _, indices = knn.kneighbors(des)
+
+    indices_list = indices.tolist()
+    print(indices_list)
+    return indices_list
+
+
 if __name__ == "__main__":
     # Loads the model
 
@@ -91,7 +132,9 @@ if __name__ == "__main__":
     # Loads the embedding
     embedding = np.load(config.EMBEDDING_PATH)
 
-    indices_list = compute_similar_images(
-        config.TEST_IMAGE_PATH, config.NUM_IMAGES, embedding, device
-    )
+    # indices_list = compute_similar_images(
+    #     config.TEST_IMAGE_PATH, config.NUM_IMAGES, embedding, device
+    # )
+    # plot_similar_images(indices_list)
+    indices_list = compute_similar_features(config.TEST_IMAGE_PATH, 5, embedding)
     plot_similar_images(indices_list)

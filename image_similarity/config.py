@@ -25,4 +25,4 @@ EMBEDDING_SHAPE = (1, 256, 16, 16)
 
 ###### Test time #########
 NUM_IMAGES = 10
-TEST_IMAGE_PATH = "../data/images/3699.jpg"
+TEST_IMAGE_PATH = "../data/images/0.jpg"
