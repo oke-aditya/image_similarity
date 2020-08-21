@@ -20,6 +20,19 @@ Thus we get images that are similar to given features in an image.
 
 ## Outputs: -
 
+- This is an image whose features have been computed using ORB.
+
+![Feature Image](images/feature_image.png)
+
+- Recommended images, matching these features.
+
+![Recommended Image1](images/recommended_458_kp.png)
+
+![Recommended Image1](images/recommended_2485_kp.png)
+
+I have plotted keypoints on them.
+
+We can see that the features extracted are similar.
 
 
 

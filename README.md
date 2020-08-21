@@ -46,7 +46,7 @@ Some sample outputs of recommendations.
 
 - Query Image
 
-![Query Image](outputs/query_image_0/query_image.jpg)
+![Query Image](outputs/query_image_0/query_image_0.jpg)
 
 - Recommendaed Images
 
