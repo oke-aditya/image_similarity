@@ -74,6 +74,7 @@ def plot_similar_images(indices_list):
         img = Image.open(img_path).convert("RGB")
         plt.imshow(img)
         plt.show()
+        # img.save(f"../outputs/query_image_1/recommended_{index}.jpg")
 
 
 if __name__ == "__main__":
