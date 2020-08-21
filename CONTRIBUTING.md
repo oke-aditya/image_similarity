@@ -2,19 +2,19 @@
 
 **Please, follow these steps**
 
-## Step 1: Forking and Installing template_python
+## Step 1: Forking and Installing image_similarity
 
 ​1. Fork the repo to your own github account. click the Fork button to
 create your own repo copy under your GitHub account. Once forked, you're
 responsible for keeping your repo copy up-to-date with the upstream
-template_python repo.
+image_similarity repo.
 
-​2. Download a copy of your remote username/template_python repo to your
+​2. Download a copy of your remote username/image_similarity repo to your
 local machine. This is the working directory where you will make
 changes:
 
 ```bash
-$ git clone https://github.com/oke-aditya/template_python.git
+$ git clone https://github.com/oke-aditya/image_similarity.git
 ```
 
 3.  Install the requirments. You many use miniconda or conda as well.
@@ -26,10 +26,10 @@ $ pip install -r requirements.txt
 ## Step 2: Stay in Sync with the original (upstream) repo
 
 1.  Set the upstream to sync with this repo. This will keep you in sync
-    with template_python easily.
+    with image_similarity easily.
 
 ```bash
-$ git remote add upstream https://github.com/oke-aditya/template_python.git
+$ git remote add upstream https://github.com/oke-aditya/image_similarity.git
 ```
 
 2.  Updating your local repo: Pull the upstream (original) repo.
@@ -81,7 +81,7 @@ gh pr create -B master -b "enter body of PR here" -t "enter title"
 #### 2. Confirm PR was created
 
 You can confirm that your PR has been created by running the following
-command, from the template_python folder:
+command, from the image_similarity folder:
 
 ```bash
 gh pr list 
@@ -115,7 +115,7 @@ time and appear as a single commit in the repository.
 #### 1. Create a pull request git
 
 Upload your local branch to your remote GitHub repo
-(github.com/username/template_python)
+(github.com/username/image_similarity)
 
 ```bash
 git push
@@ -123,13 +123,13 @@ git push
 
 After the push completes, a message may display a URL to automatically
 submit a pull request to the upstream repo. If not, go to the
-template_python main repo and GitHub will prompt you to create a pull
+image_similarity main repo and GitHub will prompt you to create a pull
 request.
 
 #### 2. Confirm PR was created:
 
 Ensure your pr is listed
-[here](https://github.com/oke-aditya/template_python/pulls)
+[here](https://github.com/oke-aditya/image_similarity/pulls)
 
 3.  Updating a PR:
 
@@ -148,9 +148,9 @@ git push origin <enter-branch-name-same-as-before>
 Maintainers and other contributors will review your pull request. Please
 participate in the discussion and make the requested changes. When your
 pull request is approved, it will be merged into the upstream
-template_python repo.
+image_similarity repo.
 
 > **note**
 >
-> Template_python repository has CI checking. It will automatically check your code
+> image_similarity repository has CI checking. It will automatically check your code
 > for build as well.
