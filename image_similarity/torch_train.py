@@ -103,4 +103,3 @@ if __name__ == "__main__":
     # Dump the embeddings for complete dataset, not just train
     flattened_embedding = numpy_embedding.reshape((num_images, -1))
     np.save(config.EMBEDDING_PATH, flattened_embedding)
-

@@ -1,4 +1,9 @@
-__all__ = ["load_image_tensor", "compute_similar_images", "plot_similar_images"]
+__all__ = [
+    "load_image_tensor",
+    "compute_similar_images",
+    "compute_similar_features",
+    "plot_similar_images",
+]
 
 import config
 import torch
@@ -11,8 +16,6 @@ import cv2
 from PIL import Image
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
-
-# %matplotlib inline
 
 
 def load_image_tensor(image_path, device):
@@ -70,16 +73,20 @@ def plot_similar_images(indices_list):
 
     indices = indices_list[0]
     for index in indices:
-        img_name = str(index - 1) + ".jpg"
-        img_path = os.path.join(config.DATA_PATH + img_name)
-        print(img_path)
-        img = Image.open(img_path).convert("RGB")
-        plt.imshow(img)
-        plt.show()
-        # img.save(f"../outputs/query_image_1/recommended_{index}.jpg")
+        if index == 0:
+            # index 0 is a dummy embedding.
+            pass
+        else:
+            img_name = str(index - 1) + ".jpg"
+            img_path = os.path.join(config.DATA_PATH + img_name)
+            print(img_path)
+            img = Image.open(img_path).convert("RGB")
+            plt.imshow(img)
+            plt.show()
+            img.save(f"../outputs/query_image_3/recommended_{index - 1}.jpg")
 
 
-def compute_similar_features(image_path, num_images, embedding, nfeatures=20):
+def compute_similar_features(image_path, num_images, embedding, nfeatures=30):
     """ 
     Given a image, it computes features using ORB detector and finds similar images to it
     Args:

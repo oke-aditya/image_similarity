@@ -12,7 +12,7 @@ import cv2
 if __name__ == "__main__":
     image = cv2.imread(config.TEST_IMAGE_PATH)
     # Initialize ORB detector
-    orb = cv2.ORB_create(20)
+    orb = cv2.ORB_create(30)
 
     # Detect features
     kp = orb.detect(image, None)
