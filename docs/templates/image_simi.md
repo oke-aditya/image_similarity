@@ -19,4 +19,11 @@ These nearest embeddings are those in pre-learnt embedding which are nearest to 
 
 Use the indices of these nearest embeddings, we display the most similar image from our images folder.
 
+## Models
+
+- Some models trained using a sample dataset are given in [this](https://drive.google.com/drive/folders/1T6uS4O7LiuGMtXlRSMFmKAEDNQ08Ry25?usp=sharing) link.
+- It contains encoder, decoder and numpy embeddings generated from auto-enocoders.
+- These are obtained by running `torch_train.py` script.
+
+
 
