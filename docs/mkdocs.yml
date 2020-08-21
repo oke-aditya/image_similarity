@@ -28,4 +28,5 @@ nav:
   - Convolutional Auto-encoder: index.md
   - Creating Embeddings: creating_embeddings.md
   - Finding Similar Images: image_simi.md
+  - Finding Similar Features: image_features.md
   - Clustering Images: image_cluster.md 

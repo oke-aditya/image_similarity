@@ -1,0 +1,3 @@
+sklearn
+opencv-python
+matplotlib

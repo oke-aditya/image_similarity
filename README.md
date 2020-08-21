@@ -11,6 +11,12 @@
 - Builds a simple Convolutional Auto-encoder based Image similarity engine.
 - This solves the problem of finding similar images using unsupervised learning. There are no labels for images.
 
+Tasks that it can do.
+
+- [x] Similar images using Auto-encoders.
+- [x] Similar image search from image features.
+- [x] Clustering similar images.
+
 ## Repostory Structure.
 ```
 === data                        Read data from here. It is in gitignore so it won't appear here.
