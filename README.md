@@ -12,6 +12,7 @@
 - This solves the problem of finding similar images using unsupervised learning. There are no labels for images.
 
 ## Repostory Structure.
+```
 === data                        Read data from here. It is in gitignore so it won't appear here.
 === docs                        Documentation using mkdocs.
 === image_similarity
@@ -24,6 +25,7 @@
 ====== torch_inference.ipynb    Inference code in .ipynb to play with.
 ====== torch_train.ipynb        Stand-alone code to train in Jupyter.
 === tests                       Contains tests for CI
+```
 
 ## Documentation
 
