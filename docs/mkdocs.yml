@@ -25,4 +25,5 @@ extra_javascript:
 nav:
   - Convolutional Auto-encoder: index.md
   - Creating Embeddings: creating_embeddings.md
-  - Finding Similar Images: image_simi.md 
+  - Finding Similar Images: image_simi.md
+  - Clustering Images: image_cluster.md 
