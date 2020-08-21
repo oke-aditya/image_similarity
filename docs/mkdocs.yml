@@ -4,6 +4,8 @@ theme:
   palette:
     primary: "dark-blue"
     accent: "dark-blue"
+  features:
+    - navigation.expand
 
 docs_dir: templates
 repo_url: https://github.com/oke-aditya/image_similarity
