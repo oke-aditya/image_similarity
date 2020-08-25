@@ -1,6 +1,6 @@
 # Let's make the app
 
-from flask import Flask, request
+from flask import Flask, request, json
 import torch_model
 import config
 import torch
