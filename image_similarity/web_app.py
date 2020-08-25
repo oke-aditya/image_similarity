@@ -109,17 +109,24 @@ def index():
 @app.route("/simfeat", methods=["POST"])
 def simfeat():
     r = request.files["image"]
+    # print("Hi")
     # convert string of image data to uint8
     nparr = np.fromstring(r.data, np.uint8)
     # decode image
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
     indices_list = compute_similar_features(img, num_images=5, embedding=embedding)
     # Need to display the images
+    return (
+        json.dumps({"indices_list": indices_list}),
+        200,
+        {"ContentType": "application/json"},
+    )
 
 
-@app.rout("/simimages", methods=["POST"])
+@app.route("/simimages", methods=["POST"])
 def simimages():
     image = request.files["image"]
+    # print("Hi")
     image = Image.open(image)
     image_tensor = T.ToTensor()(image)
     image_tensor = image_tensor.unsqueeze(0)
@@ -127,6 +134,11 @@ def simimages():
         image_tensor, num_images=5, embedding=embedding, device=device
     )
     # Need to display the images
+    return (
+        json.dumps({"indices_list": indices_list}),
+        200,
+        {"ContentType": "application/json"},
+    )
 
 
 if __name__ == "__main__":
