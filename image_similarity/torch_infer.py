@@ -87,7 +87,7 @@ def plot_similar_images(indices_list):
 
 
 def compute_similar_features(image_path, num_images, embedding, nfeatures=30):
-    """ 
+    """
     Given a image, it computes features using ORB detector and finds similar images to it
     Args:
     image_path: Path to image whose features and simlar images are required.
@@ -113,7 +113,9 @@ def compute_similar_features(image_path, num_images, embedding, nfeatures=30):
     # print(embedding.shape)
 
     pca = PCA(n_components=des.shape[-1])
-    reduced_embedding = pca.fit_transform(embedding,)
+    reduced_embedding = pca.fit_transform(
+        embedding,
+    )
     # print(reduced_embedding.shape)
 
     knn = NearestNeighbors(n_neighbors=num_images, metric="cosine")
