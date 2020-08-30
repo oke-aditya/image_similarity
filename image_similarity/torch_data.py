@@ -10,7 +10,7 @@ from torch.utils.data import Dataset
 class FolderDataset(Dataset):
     """
     Creates a PyTorch dataset from folder, returning two tensor images.
-    Args: 
+    Args:
     main_dir : directory where images are stored.
     transform (optional) : torchvision transforms to be applied while making dataset
     """

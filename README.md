@@ -44,19 +44,9 @@ It contains detailed description of work.
 
 Some sample outputs of recommendations.
 
-- Query Image
+![Output 1](outputs/query_image_0/image_sim_op.png)
 
-![Query Image](outputs/query_image_0/query_image_0.jpg)
-
-- Recommendaed Images
-
-![Recommendation 1](outputs/query_image_0/recommended_298.jpg)
-
-
-![Recommendation 2](outputs/query_image_0/recommended_532.jpg)
-
-
-![Recommendation 3](outputs/query_image_0/recommended_813.jpg)
+![Output 2](outputs/query_image_0/image_sim_op2.png)
 
 More outputs can be found in outputs folder.
 

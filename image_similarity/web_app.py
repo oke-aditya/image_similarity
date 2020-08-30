@@ -63,7 +63,7 @@ def compute_similar_images(image_tensor, num_images, embedding, device):
 
 
 def compute_similar_features(image, num_images, embedding, nfeatures=30):
-    """ 
+    """
     Given a image, it computes features using ORB detector and finds similar images to it
     Args:
     image: Opencv read Image whose features and simlar images are required.
@@ -88,7 +88,9 @@ def compute_similar_features(image, num_images, embedding, nfeatures=30):
     # print(embedding.shape)
 
     pca = PCA(n_components=des.shape[-1])
-    reduced_embedding = pca.fit_transform(embedding,)
+    reduced_embedding = pca.fit_transform(
+        embedding,
+    )
     # print(reduced_embedding.shape)
 
     knn = NearestNeighbors(n_neighbors=num_images, metric="cosine")
