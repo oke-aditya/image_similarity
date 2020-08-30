@@ -46,7 +46,7 @@ Some sample outputs of recommendations.
 
 ![Output 1](outputs/query_image_0/Image_sim_op.png)
 
-![Output 2](outputs/query_image_0/Image_sim_op2.png)
+![Output 2](outputs/query_image_2/Image_sim_op2.png)
 
 More outputs can be found in outputs folder.
 
