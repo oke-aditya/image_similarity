@@ -70,7 +70,7 @@ def val_step(encoder, decoder, val_loader, loss_fn, device):
             enc_output = encoder(train_img)
             dec_output = decoder(enc_output)
 
-            loss = loss_fn(enc_output, dec_output)
+            loss = loss_fn(dec_output, target_img)
 
     return loss.item()
 
