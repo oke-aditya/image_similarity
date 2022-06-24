@@ -1,6 +1,7 @@
 ## Auto-encoder based Image-Similarity Engine
 
 - Builds a simple Convolutional Auto-encoder based Image similarity engine.
+- Dataset is available over Kaggle https://www.kaggle.com/datasets/okeaditya/animals-data
 
 ## Convolutional Auto-encoder
 ![Autoencoder](images/conv_autoencoder.png)
