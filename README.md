@@ -10,6 +10,8 @@
 
 Blog Post is [here](https://medium.com/pytorch/image-similarity-search-in-pytorch-1a744cf3469)
 
+Dataset is available over [Kaggle](https://www.kaggle.com/datasets/okeaditya/animals-data)
+
 Published in Official PyTorch Medium Channel. Thank you PyTorch team !
 
 - Builds a simple Convolutional Auto-encoder based Image similarity engine.
